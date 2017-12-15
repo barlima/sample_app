@@ -16,6 +16,13 @@ class User < ApplicationRecord
   before_save :email_to_lowercase
 
 
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
   private
 
   def email_to_lowercase
