@@ -192,3 +192,24 @@ input {
   width: auto;
   margin-left: 0;
 }
+
+.gravatar {
+  margin-bottom: 15px;
+}
+
+.gravatar_edit {
+  margin-top: 0;
+  height: 100px;
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
