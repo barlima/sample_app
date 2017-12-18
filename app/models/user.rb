@@ -17,10 +17,12 @@ class User < ApplicationRecord
   # Callbacks
 
   before_save :email_to_lowercase
+  before_create :create_activation_digest
 
   # Accesors
 
   attr_accessor :remember_token
+  attr_accessor :activation_token
 
   # Remembers a user in the database for use in persistent sessions.
   def remember
@@ -59,4 +61,8 @@ class User < ApplicationRecord
     email.downcase!
   end
 
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
+  end
 end
