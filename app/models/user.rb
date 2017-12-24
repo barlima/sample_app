@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  # Dependencies
+
+  has_many  :microposts, dependent: :destroy
+
   # Callbacks
 
   before_save :email_to_lowercase
